@@ -1,6 +1,5 @@
 ---
 const { username } = Astro.props;
-import { Image } from "astro:assets";
 import avatar from "../assets/hq.png";
 ---
 
@@ -11,10 +10,10 @@ import avatar from "../assets/hq.png";
     target="_blank"
     rel="noopener"
 >
-    <Image
+    <img
         class="avatar"
         id="avatar"
-        src={avatar}
+        src={avatar.src}
         alt={username + "'s Logo"}
         draggable="false"
     />
