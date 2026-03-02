@@ -1,0 +1,43 @@
+---
+const { username } = Astro.props;
+import { Image } from "astro:assets";
+import avatar from "../assets/hq.png";
+---
+
+<a
+    class="dname-link"
+    id="dname-link"
+    href={`${Astro.url.protocol}//${username.toLowerCase()}.github.io`}
+    target="_blank"
+    rel="noopener"
+>
+    <Image
+        class="avatar"
+        id="avatar"
+        src={avatar}
+        alt={username + "'s Logo"}
+        draggable="false"
+    />
+</a>
+
+<style>
+    .dname-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        text-decoration: none;
+        color: var(--color);
+        transition: opacity 0.2s;
+    }
+
+    .dname-link:hover {
+        opacity: 0.8;
+    }
+
+    .avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+</style>

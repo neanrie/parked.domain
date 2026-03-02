@@ -1,3 +1,10 @@
+---
+import "../lib/css/global.css";
+
+const { domain, username } = Astro.props;
+const description = `${domain} is a ${username}'s owned domain name, actually parked.`;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -6,18 +13,22 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{domain}</title>
+		<meta name="description" content={description} />
+		<meta name="author" content={username} />
+		<link rel="icon" type="image/png" href="assets/img/logo/colorful.png" />
+		<script is:inline src="assets/js/favicon.js"></script>
 	</head>
 	<body>
-		<slot />
+		<div class="container">
+			<slot />
+		</div>
 	</body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
+	.container {
+		text-align: center;
+		padding: 2rem;
 	}
 </style>

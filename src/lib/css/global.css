@@ -1,0 +1,33 @@
+:root {
+    --background: oklch(16.376% 0.00002 271.152);
+    --color: oklch(98.5% 0 0);
+    --default-font-family: "Figtree Variable", sans-serif;
+    --border: rgba(255, 255, 255, 0.1);
+    --overlay-bg: rgba(0, 0, 0, 0.7);
+    --shadow: rgba(0, 0, 0, 0.5);
+}
+
+@font-face {
+    font-family: "Figtree Variable";
+    src: url("../fonts/Figtree-Variable.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--default-font-family);
+}
+
+body {
+    background-color: var(--background);
+    color: var(--color);
+    font-family: var(--default-font-family);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

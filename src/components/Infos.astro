@@ -1,0 +1,81 @@
+---
+const { domain, username } = Astro.props;
+---
+
+<p class="infos" id="infos">
+    <b>{domain}</b> is a parked domain and <b
+        data-title={`Owned and operated by ${username}`}
+        title="{`Owned and operated by ${username}`}">owned by {username}</b
+    >
+</p>
+
+<style>
+    .infos {
+        margin-top: 1rem;
+        font-size: 1rem;
+        color: var(--color);
+        font-family: Geist, sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    p b {
+        color: var(--color);
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 1px;
+        position: relative;
+        cursor: help;
+    }
+
+    b[data-title] {
+        position: relative;
+    }
+
+    b[data-title]::after {
+        content: attr(data-title);
+        position: absolute;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        background: color-mix(in oklch, var(--background), transparent 20%);
+        backdrop-filter: blur(8px);
+        color: var(--color);
+        padding: 0.5rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 12px
+            color-mix(in srgb, var(--shadow), transparent 40%);
+        border: 1px solid var(--border);
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    b[data-title]::before {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        border-width: 6px 6px 0 6px;
+        border-style: solid;
+        border-color: var(--border) transparent transparent transparent;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    b[data-title]:hover::after,
+    b[data-title]:hover::before {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+    }
+</style>
