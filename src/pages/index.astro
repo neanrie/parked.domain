@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import Logo from "../components/Logo.astro";
 import Infos from "../components/Infos.astro";
 
+export const prerender = false;
+
 const domain = Astro.url.hostname;
 const username = import.meta.env.PUBLIC_USERNAME_OWNER;
 ---
