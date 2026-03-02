@@ -5,7 +5,10 @@ import Infos from "../components/Infos.astro";
 
 export const prerender = false;
 
-const domain = Astro.url.hostname;
+const domain =
+	Astro.request.headers.get("x-forwarded-host") ??
+	Astro.request.headers.get("host") ??
+	Astro.url.hostname;
 const username = import.meta.env.PUBLIC_USERNAME_OWNER;
 ---
 
